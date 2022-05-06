@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Titly - URL Shortener</title>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .container {
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction:column; 
+            /* width: 80%; */
+            gap:0.3em;
+        }
+
+        .urlRow {
+            /* border: 1px solid green; */
+            display:flex;
+            justify-content: space-between;
+            gap: 0.5em;
+        }
+
+        p {
+            /* border: 1px solid blue; */
+            margin:0;
+            flex-grow: 1;
+            padding: 0.5em 1em;
+            background-color:rgba(240,240,240,0.9);
+        }
+        p.one {
+            flex:2;
+        }
+        p.two {
+            flex:1;
+        }
+        p.three {
+            flex:2;
+        }
+        p.four {
+            flex:1;
+        }
+        p.align-right {
+            text-align: right;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <% urls.forEach(url => { %>
+      <div class="urlRow" id=<%= url.id %>>
+        <p class="one"><%= url.full %></p>
+        <p class="two"><%= url.shortCode %></p>
+        <p class="three"><a target="_" href=<%= url.redirectUrl %>><%= url.redirectUrl %></a></p>
+        <p class="align-right four"><%= url.clicks %></p>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
